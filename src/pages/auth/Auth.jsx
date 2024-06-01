@@ -2,11 +2,15 @@ import { Link } from "react-router-dom";
 import Meta from "../../components/meta/Meta";
 // import "./../../index.scss";
 import "./auth.scss";
+import Model from "../../components/model/Model";
+import { useState } from "react";
 
 const Auth = () => {
+  const [modal, setModal] = useState(false);
   return (
     <>
       <Meta title="Facebook log in or sing up" />
+     { modal &&  <Model hideModal={setModal} /> }
       <div className="fb-auth-wrapper">
         <div className="fb-auth-container">
           <div className="fb-auth-left">
@@ -22,9 +26,9 @@ const Auth = () => {
               </form>
               <Link className="fb-forget-btn" to="">Forgotten password?</Link>
               <div className="divider"></div>
-              <button className="btn-create">Create new account</button>
+              <button onClick={() => setModal(true)} className="btn-create">Create new account</button>
             </div>
-           <p className="fb-auth-text"><Link to="">Create a Page</Link> for a celebrity, brand or business.</p>
+            <p className="fb-auth-text"><Link to="">Create a Page</Link> for a celebrity, brand or business.</p>
           </div>
         </div>
       </div>

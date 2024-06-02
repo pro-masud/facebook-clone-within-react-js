@@ -10,7 +10,20 @@ const Auth = () => {
   return (
     <>
       <Meta title="Facebook log in or sing up" />
-     { modal &&  <Model hideModal={setModal} /> }
+     { 
+       
+        <Model hideModal={setModal} > 
+          <form action="" className="fb-sing-up-form">
+            <div className="fb-modal-input">
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Surname" />
+            </div>
+            <input type="text" placeholder="Email Address or Phone Number" />
+            <input type="password" placeholder="Password" />
+           
+          </form>
+        </Model>
+     }
       <div className="fb-auth-wrapper">
         <div className="fb-auth-container">
           <div className="fb-auth-left">

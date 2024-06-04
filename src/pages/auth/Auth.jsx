@@ -4,13 +4,14 @@ import Meta from "../../components/meta/Meta";
 import "./auth.scss";
 import Model from "../../components/model/Model";
 import { useState } from "react";
+import { VscQuestion } from "react-icons/vsc";
 
 const Auth = () => {
   const [modal, setModal] = useState(false);
   return (
     <>
       <Meta title="Facebook log in or sing up" />
-     { 
+     { modal &&
        
         <Model hideModal={setModal} > 
           <form action="" className="fb-sing-up-form">
@@ -20,7 +21,22 @@ const Auth = () => {
             </div>
             <input type="text" placeholder="Email Address or Phone Number" />
             <input type="password" placeholder="Password" />
-           
+            <div className="register-extra-fields">
+              <div className="register-title">
+                <span>Date of birth <VscQuestion /></span>
+              </div>
+              <div className="register-extra">
+                <select name="" id="">
+                  <option value="">--Day--</option>
+                </select>
+                <select name="" id="">
+                  <option value="">--Month--</option>
+                </select>
+                <select name="" id="">
+                  <option value="">--Years--</option>
+                </select>
+              </div>
+            </div>
           </form>
         </Model>
      }

@@ -36,6 +36,20 @@ const Auth = () => {
                   <option value="">--Years--</option>
                 </select>
               </div>
+              <div className="register-extra">
+                <label>
+                  <span>Female</span>
+                  <input name="gender" type="radio" />
+                </label>
+                <label>
+                  <span>Male</span>
+                  <input name="gender" type="radio" />
+                </label>
+                <label>
+                  <span>Custom</span>
+                  <input name="gender" type="radio" />
+                </label>
+              </div>
             </div>
           </form>
         </Model>

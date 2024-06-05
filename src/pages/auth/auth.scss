@@ -104,3 +104,35 @@
         }
     }
 }
+
+.fb-sing-up-form{
+    display: flex;
+    flex-direction: column;
+
+    .register-extra-fields{
+        display: flex;
+        flex-direction: column;
+
+        .register-title {
+            span{
+                color: #606770;
+                font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+                font-size: 12px;
+                font-weight: normal;
+                line-height: 20px;
+                margin-bottom: 0;
+                margin-top: 2px;
+            }
+        }
+
+        .register-extra{
+           display: flex;
+           justify-content: space-between;
+           gap: 10px;
+
+           select{
+            flex: 1;
+           }
+        }
+    }
+}

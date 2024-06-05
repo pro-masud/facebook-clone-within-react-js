@@ -5,6 +5,9 @@ import "./auth.scss";
 import Model from "../../components/model/Model";
 import { useState } from "react";
 import { VscQuestion } from "react-icons/vsc";
+import { Day, Month } from "../../faker/auth";
+
+const years = Array.from({length: 100}, (a, i) => new Date().getFullYear() - i);
 
 const Auth = () => {
   const [modal, setModal] = useState(false);
@@ -27,13 +30,20 @@ const Auth = () => {
               </div>
               <div className="register-extra">
                 <select name="" id="">
-                  <option value="">--Day--</option>
+                  {Day?.map((item, index) => 
+                    <option value="{item}" key={index} selected={new Date().getDay() == item - 2 ? true : false}>{item}</option>
+                  )}
+                  
                 </select>
                 <select name="" id="">
-                  <option value="">--Month--</option>
+                  {Month?.map((item, index) => 
+                    <option value="{item}" key={index} selected={new Date().getMonth() == index ? true : false}>{item}</option>
+                  )}
                 </select>
                 <select name="" id="">
-                  <option value="">--Years--</option>
+                  {years?.map((item, index) => 
+                    <option value="{item}" key={index}>{item}</option>
+                  )}
                 </select>
               </div>
               <div className="register-extra">

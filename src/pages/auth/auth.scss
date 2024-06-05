@@ -108,10 +108,12 @@
 .fb-sing-up-form{
     display: flex;
     flex-direction: column;
+   
 
     .register-extra-fields{
         display: flex;
         flex-direction: column;
+        gap: 15px;
 
         .register-title {
             span{
@@ -132,6 +134,24 @@
 
            select{
             flex: 1;
+            background-color: transparent;
+            outline: none;
+            border: var(--border-color);
+            padding: 10px 12px;
+            border-radius: 10px;
+           }
+
+           label{
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border: var(--border-color);
+            border-radius: 10px;
+
+            input[type="radio"]{
+                width: 15px;
+            }
            }
         }
     }

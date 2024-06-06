@@ -10,8 +10,26 @@ import { Day, Month } from "../../faker/auth";
 const years = Array.from({length: 100}, (a, i) => new Date().getFullYear() - i);
 
 const Auth = () => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal]   = useState(false);
   const [gender, setGender] = useState("");
+  const [input, setInput]   = useState({
+    first_name : "",
+    surname_name: "",
+    email_or_phone: "",
+    password: "",
+    day: "",
+    month: "",
+    years: "",
+    gender: ""
+
+  });
+
+  const handleInputChange = (e) => {
+    setInput((prevState) => ({
+      ...prevState,
+      [e.target.name] : e.target.value,
+    }));
+  }
   return (
     <>
       <Meta title="Facebook log in or sing up" />
@@ -20,45 +38,45 @@ const Auth = () => {
         <Model hideModal={setModal} > 
           <form action="" className="fb-sing-up-form">
             <div className="fb-modal-input">
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Surname" />
+              <input type="text" placeholder="First Name" name="first_name" value={input.first_name} onChange={handleInputChange} />
+              <input type="text" placeholder="Surname" name="surname_name" value={input.surname_name} onChange={handleInputChange} />
             </div>
-            <input type="text" placeholder="Email Address or Phone Number" />
-            <input type="password" placeholder="Password" />
+            <input type="text" placeholder="Email Address or Phone Number" name="email_or_phone" value={input.email_or_phone} onChange={handleInputChange} />
+            <input type="password" placeholder="Password" name="password" value={input.password} onChange={handleInputChange} />
             <div className="register-extra-fields">
               <div className="register-title">
                 <span>Date of birth <VscQuestion /></span>
               </div>
               <div className="register-extra">
-                <select name="" id="">
+                <select name="day" value={input.day} onChange={handleInputChange}>
                   {Day?.map((item, index) => 
-                    <option value="{item}" key={index} selected={new Date().getDay() == item - 2 ? true : false}>{item}</option>
+                    <option value={item} key={index} selected={new Date().getDay() == item - 2 ? true : false}>{item}</option>
                   )}
                   
                 </select>
-                <select name="" id="">
+                <select name="month" value={input.month} onChange={handleInputChange}>
                   {Month?.map((item, index) => 
-                    <option value="{item}" key={index} selected={new Date().getMonth() == index ? true : false}>{item}</option>
+                    <option value={item} key={index} selected={new Date().getMonth() == index ? true : false}>{item}</option>
                   )}
                 </select>
-                <select name="" id="">
+                <select name="years" value={input.years} onChange={handleInputChange}>
                   {years?.map((item, index) => 
-                    <option value="{item}" key={index}>{item}</option>
+                    <option value={item} key={index}>{item}</option>
                   )}
                 </select>
               </div>
               <div className="register-extra">
                 <label>
                   <span>Female</span>
-                  <input name="gender" type="radio" onChange={() => setGender('Female')} />
+                  <input name="gender" type="radio" value="Female" onChange={handleInputChange} />
                 </label>
                 <label>
                   <span>Male</span>
-                  <input name="gender" type="radio" onChange={() => setGender('Male')} />
+                  <input name="gender" type="radio" value="Male" onChange={handleInputChange} />
                 </label>
                 <label>
                   <span>Custom</span>
-                  <input name="gender" type="radio" onChange={() => setGender('Custom')} />
+                  <input name="gender" type="radio" value="Custom" onChange={handleInputChange} />
                 </label>
               </div>
             </div>

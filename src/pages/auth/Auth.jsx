@@ -11,6 +11,7 @@ const years = Array.from({length: 100}, (a, i) => new Date().getFullYear() - i);
 
 const Auth = () => {
   const [modal, setModal] = useState(false);
+  const [gender, setGender] = useState("");
   return (
     <>
       <Meta title="Facebook log in or sing up" />
@@ -49,18 +50,21 @@ const Auth = () => {
               <div className="register-extra">
                 <label>
                   <span>Female</span>
-                  <input name="gender" type="radio" />
+                  <input name="gender" type="radio" onChange={() => setGender('Female')} />
                 </label>
                 <label>
                   <span>Male</span>
-                  <input name="gender" type="radio" />
+                  <input name="gender" type="radio" onChange={() => setGender('Male')} />
                 </label>
                 <label>
                   <span>Custom</span>
-                  <input name="gender" type="radio" />
+                  <input name="gender" type="radio" onChange={() => setGender('Custom')} />
                 </label>
               </div>
             </div>
+            <p>People who use our service may have uploaded your contact information to Facebook. <Link>Learn more</Link>.</p>
+            <p>By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS notifications from us and can opt out at any time.</p>
+            <button type="submit" className="fb-submit-btn">Sing Up</button>
           </form>
         </Model>
      }

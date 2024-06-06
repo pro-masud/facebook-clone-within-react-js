@@ -113,7 +113,7 @@
     .register-extra-fields{
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
 
         .register-title {
             span{
@@ -154,5 +154,21 @@
             }
            }
         }
+    }
+
+    p{
+        font-size: 11px;
+        color: #777;
+    }
+    .fb-submit-btn{
+        background-color: var(--secondary-color);
+        color: #fff;
+        font-size: 18px;
+        border: var(--secondary-color);
+        padding: 8px;
+        width: 200px;
+        margin:10px auto;
+        border-radius: 5px;
+        cursor: pointer;
     }
 }

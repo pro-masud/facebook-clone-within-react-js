@@ -24,11 +24,43 @@ const Auth = () => {
 
   });
 
+  const [border, setBorder]   = useState({
+    first_name : true,
+    surname_name: true,
+    email_or_phone: true,
+    password: true,
+    day: true,
+    month: true,
+    years: true,
+    gender: true
+
+  });
+
   const handleInputChange = (e) => {
     setInput((prevState) => ({
       ...prevState,
       [e.target.name] : e.target.value,
     }));
+  }
+
+  // submit form default prevent
+  const handleSingUpForm = (e) => {
+    e.preventDefault();
+  }
+
+
+  const handleBlurError = (e) => {
+    if(e.target.value == ""){
+      setBorder((prevState) => ({
+        ...prevState,
+       [e.target.name] : false,
+      }));
+    }else{
+      setBorder((prevState) => ({
+        ...prevState,
+       [e.target.name] : true,
+      }));
+    }
   }
   return (
     <>
@@ -36,13 +68,13 @@ const Auth = () => {
      { modal &&
        
         <Model hideModal={setModal} > 
-          <form action="" className="fb-sing-up-form">
+          <form onSubmit={handleSingUpForm} className="fb-sing-up-form">
             <div className="fb-modal-input">
-              <input type="text" placeholder="First Name" name="first_name" value={input.first_name} onChange={handleInputChange} />
-              <input type="text" placeholder="Surname" name="surname_name" value={input.surname_name} onChange={handleInputChange} />
+              <input className={border.first_name ? "" : "border"} type="text" placeholder="First Name" name="first_name" value={input.first_name} onChange={handleInputChange} onBlur={handleBlurError} />
+              <input  className={border.surname_name ? "" : "border"} type="text" placeholder="Surname" name="surname_name" value={input.surname_name} onChange={handleInputChange} onBlur={handleBlurError} />
             </div>
-            <input type="text" placeholder="Email Address or Phone Number" name="email_or_phone" value={input.email_or_phone} onChange={handleInputChange} />
-            <input type="password" placeholder="Password" name="password" value={input.password} onChange={handleInputChange} />
+            <input className={border.email_or_phone ? "" : "border"} type="text" placeholder="Email Address or Phone Number" name="email_or_phone" value={input.email_or_phone} onChange={handleInputChange} onBlur={handleBlurError} />
+            <input className={border.password ? "" : "border"} type="password" placeholder="Password" name="password" value={input.password} onChange={handleInputChange} onBlur={handleBlurError} />
             <div className="register-extra-fields">
               <div className="register-title">
                 <span>Date of birth <VscQuestion /></span>
